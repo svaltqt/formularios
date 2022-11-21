@@ -19,16 +19,34 @@ $(document).ready(function()
                 var x = Math.random()*(max - min)+min;
                 var age = Math.round(x);
                 
-            
-/*
-                // calcular primera letra del nombre
-                var letra =asd.substr(0,1);
-                var correo = (letra+apellidos+year+"@"+tipo_Correo+".com").toLowerCase();
-                
-                
-*/                           
+
+                // Enviar informacion al Input
                 $("#inputName").val(name);
                 $("#inputAge").val(age);
+
+                 //sessionStorage
+                 // guarda en Session Storage
+                 sessionStorage.setItem(name, age);
+                 let personName = sessionStorage.getItem(age);
+                 let storageAge = sessionStorage.getItem(name);
+
+                // Mayor que 18
+                if (storageAge >= 18){
+                    document.getElementById("nusuario").innerHTML = personName;
+                    document.getElementById("nedad").innerHTML = storageAge;
+                    alert("MAYOR o igual a 18");
+
+                }else if(storageAge < 18){
+                    document.getElementById("nusuario").innerHTML = personName;
+                    document.getElementById("nedad").innerHTML = storageAge;
+                    alert("MENOR de 18");
+
+                }
+
+
+
+                 
+                 //document.getElementById("nedad").innerHTML = storageAge;
                 
             });
         });
