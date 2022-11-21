@@ -3,14 +3,23 @@ $(document).ready(function()
             
             $("#generar").click(function()
             {             
+                // num aletario para Usuario
+                var min = 1; var max = 10;
+                var x = Math.random()*(max - min)+min;
+                var xint = Math.round(x);
+                
                             
                 //creacion de usuarios         
-                 var nombre = "usuario"                
-                 var edad = 22;
-        
+                var name = "user"+ xint               
+                 
+                //edad
                 
-                // Crear nombre 
-                //var Fullname = nombre + " " + apellidos;
+                // num aletario para Usuario
+                var min = 10; var max = 30;
+                var x = Math.random()*(max - min)+min;
+                var age = Math.round(x);
+                
+            
 /*
                 // calcular primera letra del nombre
                 var letra =asd.substr(0,1);
@@ -18,8 +27,8 @@ $(document).ready(function()
                 
                 
 */                           
-                $("#inputName").val(nombre);
-                $("#inputAge").val(edad);
+                $("#inputName").val(name);
+                $("#inputAge").val(age);
                 
             });
         });
