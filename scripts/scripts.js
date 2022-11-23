@@ -46,11 +46,14 @@ $(document).ready(function()
                 $("#inputAge").val(fechaNacimiento);
                 
 
-                //sessionStorage
-                // guarda en Session Storage
-                 sessionStorage.setItem(name, age);
-                 let personName = sessionStorage.getItem(age);
-                 let storageAge = sessionStorage.getItem(name);
+                
+                // Guardando los datos en SessionStorage
+                sessionStorage.setItem("name", name);
+                sessionStorage.setItem("bday", fechaNacimiento);
+                sessionStorage.setItem("tUser", tipoUsuario);
+
+
+                 
 
                 // Condicion de mayor de edad
                 if (storageAge >= 18){
@@ -63,13 +66,39 @@ $(document).ready(function()
                     document.getElementById("nedad").innerHTML = storageAge;
                     alert("MENOR de 18");
 
-                }
-
-
-
+                }             
                  
-                 //document.getElementById("nedad").innerHTML = storageAge;
                 
             });
             
+            // Cargar IMG en la web USUARIOS
+            var usuario = sessionStorage.getItem('tUser')
+            
+
+            if(usuario =='Usuario1'){ 
+                var add = "<div>"
+                add+="<img src='./images/usuario1.jpg' class='img-fluid profile-image-pic img-thumbnail rounded-circle my-3'width='200px' alt='profile'>"
+                add+="</div>"                 
+            
+                $("#UserprofileIMG").append(add);
+            } else if(usuario =='Usuario2'){
+                var add = "<div>"
+                add+="<img src='./images/usuario2.jpg' class='img-fluid profile-image-pic img-thumbnail rounded-circle my-3'width='200px' alt='profile'>"
+                add+="</div>"                 
+            
+                $("#UserprofileIMG").append(add);
+
+            }   
+
+            //Carga datos en la web Usuarios
+
+            var userName = sessionStorage.getItem('name')
+            var userBday = sessionStorage.getItem('bday')
+
+            var add = "<tr>"
+            add+="<td>" + "Usuario: "+ userName +"</td>"
+            add+="<td>" + "Fecha de Nacimiento:" +  userBday +"</td>"
+            add+="</tr>"                 
+        
+            $("#userContent").append(add);
         });
