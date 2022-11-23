@@ -1,9 +1,17 @@
-.usuario1{
+.usuario1 {
     background-color: rgb(115, 115, 196);
     color:rgb(44, 22, 209);    
 }
 
-.usuario2{
+.usuario2 {
     background-color: rgb(124, 232, 142);
     color:rgb(17, 181, 75);    
+}
+
+.container { 
+    background-color: aliceblue; 
+    border-radius: 15px;
+     height: 100%; 
+     width: 50%; 
+     margin: 0 auto; 
 }

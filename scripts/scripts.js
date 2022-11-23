@@ -3,26 +3,34 @@ $(document).ready(function()
             
             $("#generar").click(function()
             {             
-                // num aletario para Usuario
-                var min = 1; var max = 10;
-                var x = Math.random()*(max - min)+min;
-                var xint = Math.round(x);
+                // Funcion generar numero random con dos args
+                function getRandom(min, max) {
+                    var x = Math.random()*(max - min)+min;               
+                    var random = Math.round(x);  
+                    return random;
+                }
                 
+                // Calcular fecha de nacimiento
+                var dia = getRandom(1, 30);
+                var mes = getRandom(1, 12);
+                var ano = getRandom(1980, 2020);
+
+                var fechaNacimiento = dia +"/" + mes +"/" + ano 
+
                             
-                //creacion de usuarios         
-                var name = "user"+ xint               
+                            
+                //creacion de usuarios  
+                var random = getRandom(1, 10);      
+                var name = "user"+ random               
                  
-                //edad
                 
-                // num aletario para Usuario
-                var min = 10; var max = 30;
-                var x = Math.random()*(max - min)+min;
-                var age = Math.round(x);
+                
+                
                 
 
                 // Enviar informacion al Input
                 $("#inputName").val(name);
-                $("#inputAge").val(age);
+                $("#inputAge").val(fechaNacimiento);
 
                  //sessionStorage
                  // guarda en Session Storage
