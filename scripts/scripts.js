@@ -3,9 +3,27 @@ $(document).ready(function()
             
             $("#generar").click(function()
             {    
+                
+
                 //obtener valor del select
                 var tipoUsuario = $("#SubjectsList option:selected").text();
+
+                if(tipoUsuario =='Usuario1'){ 
+                    var add = "<div>"
+                    add+="<img src='./images/usuario1.jpg' class='img-fluid profile-image-pic img-thumbnail rounded-circle my-3'width='200px' alt='profile'>"
+                    add+="</div>"                 
                 
+                    $("#profileIMG").append(add);
+                } else if(tipoUsuario =='Usuario2'){
+                    var add = "<div>"
+                    add+="<img src='./images/usuario2.jpg' class='img-fluid profile-image-pic img-thumbnail rounded-circle my-3'width='200px' alt='profile'>"
+                    add+="</div>"                 
+                
+                    $("#profileIMG").append(add);
+
+                }                 
+
+              
                 // Funcion generar numero random con dos args
                 function getRandom(min, max) {
                     var x = Math.random()*(max - min)+min;               
@@ -26,7 +44,7 @@ $(document).ready(function()
                 // Enviar informacion al Input
                 $("#inputName").val(name);
                 $("#inputAge").val(fechaNacimiento);
-                alert(tipoUsuario);
+                
 
                 //sessionStorage
                 // guarda en Session Storage
@@ -53,4 +71,5 @@ $(document).ready(function()
                  //document.getElementById("nedad").innerHTML = storageAge;
                 
             });
+            
         });
