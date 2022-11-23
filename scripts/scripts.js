@@ -2,7 +2,10 @@ $(document).ready(function()
         { 
             
             $("#generar").click(function()
-            {             
+            {    
+                //obtener valor del select
+                var tipoUsuario = $("#SubjectsList option:selected").text();
+                
                 // Funcion generar numero random con dos args
                 function getRandom(min, max) {
                     var x = Math.random()*(max - min)+min;               
@@ -14,31 +17,24 @@ $(document).ready(function()
                 var dia = getRandom(1, 30);
                 var mes = getRandom(1, 12);
                 var ano = getRandom(1980, 2020);
-
-                var fechaNacimiento = dia +"/" + mes +"/" + ano 
-
-                            
-                            
+                var fechaNacimiento = dia + "/" + mes + "/" + ano 
+              
                 //creacion de usuarios  
                 var random = getRandom(1, 10);      
-                var name = "user"+ random               
-                 
-                
-                
-                
-                
-
+                var name = "user"+ random;            
+      
                 // Enviar informacion al Input
                 $("#inputName").val(name);
                 $("#inputAge").val(fechaNacimiento);
+                alert(tipoUsuario);
 
-                 //sessionStorage
-                 // guarda en Session Storage
+                //sessionStorage
+                // guarda en Session Storage
                  sessionStorage.setItem(name, age);
                  let personName = sessionStorage.getItem(age);
                  let storageAge = sessionStorage.getItem(name);
 
-                // Mayor que 18
+                // Condicion de mayor de edad
                 if (storageAge >= 18){
                     document.getElementById("nusuario").innerHTML = personName;
                     document.getElementById("nedad").innerHTML = storageAge;
