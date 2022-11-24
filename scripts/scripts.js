@@ -2,8 +2,7 @@ $(document).ready(function()
         { 
             
             $("#generar").click(function()
-            {    
-                
+            {               
 
                 // Obtener valor del select
                 var tipoUsuario = $("#SubjectsList option:selected").text();
@@ -11,19 +10,15 @@ $(document).ready(function()
                 if(tipoUsuario =='Usuario1'){ 
                     var add = "<div>"
                     add+="<img src='./images/usuario1.jpg' class='img-fluid profile-image-pic img-thumbnail rounded-circle my-3'width='200px' alt='profile'>"
-                    add+="</div>"                 
-                
+                    add+="</div>"                
                     $("#profileIMG").append(add);
                 } else if(tipoUsuario =='Usuario2'){
                     var add = "<div>"
                     add+="<img src='./images/usuario2.jpg' class='img-fluid profile-image-pic img-thumbnail rounded-circle my-3'width='200px' alt='profile'>"
-                    add+="</div>"                 
-                
+                    add+="</div>"                
                     $("#profileIMG").append(add);
+                }             
 
-                }                 
-
-              
                 // Funcion generar numero random con dos args
                 function getRandom(min, max) {
                     var x = Math.random()*(max - min)+min;               
@@ -43,39 +38,19 @@ $(document).ready(function()
       
                 // Enviar informacion al Input
                 $("#inputName").val(name);
-                $("#inputAge").val(fechaNacimiento);
-                
+                $("#inputAge").val(fechaNacimiento);       
 
-                
                 // Guardando los datos en SessionStorage
                 sessionStorage.setItem("name", name);
                 sessionStorage.setItem("bday", fechaNacimiento);
-                sessionStorage.setItem("tUser", tipoUsuario);
-
-
-                 
-
-                // Condicion de mayor de edad
-                if (storageAge >= 18){
-                    document.getElementById("nusuario").innerHTML = personName;
-                    document.getElementById("nedad").innerHTML = storageAge;
-                    alert("MAYOR o igual a 18");
-
-                }else if(storageAge < 18){
-                    document.getElementById("nusuario").innerHTML = personName;
-                    document.getElementById("nedad").innerHTML = storageAge;
-                    alert("MENOR de 18");
-
-                }             
-                 
-                
+                sessionStorage.setItem("tUser", tipoUsuario);         
             });
-            
+            // DOM Global
+
             // Extraer datos del SessinStorage
             var usuario = sessionStorage.getItem('tUser')
             var userName = sessionStorage.getItem('name')
-            var userBday = sessionStorage.getItem('bday')
-            
+            var userBday = sessionStorage.getItem('bday')            
             
             // Cargar IMG en la web USUARIOS
             if(usuario =='Usuario1'){                
@@ -88,9 +63,7 @@ $(document).ready(function()
                 add+="<img src='./images/usuario2.jpg' class='img-fluid profile-image-pic img-thumbnail rounded-circle my-3'width='200px' alt='profile'>"
                 add+="</div>"               
                 $("#UserprofileIMG").append(add);
-            }   
-
-           
+            }              
 
             // Calcular la edad    Fuente: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/Date
             function calcularEdad(bday){
