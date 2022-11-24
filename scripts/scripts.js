@@ -15,8 +15,9 @@ $(document).ready(function()
                    add+="<img src='./images/usuario2.jpg' class='img-fluid profile-image-pic img-thumbnail rounded-circle my-3'width='200px' alt='profile'>"
                    add+="</div>"                
                    $("#profileIMG" ).html(add);
-                   //$("#profileIMG").append(add);  
+                   
                }
+               // Guardando los datos en SessionStorage
                sessionStorage.setItem("tUser", tipoUsuario);    
             });                 
             
