@@ -72,17 +72,18 @@ $(document).ready(function()
             });
             
             // Extraer datos del SessinStorage
-             var usuario = sessionStorage.getItem('tUser')
-             var userName = sessionStorage.getItem('name')
-             var userBday = sessionStorage.getItem('bday')
+            var usuario = sessionStorage.getItem('tUser')
+            var userName = sessionStorage.getItem('name')
+            var userBday = sessionStorage.getItem('bday')
+            
             
             // Cargar IMG en la web USUARIOS
-            if(usuario =='Usuario1'){ 
+            if(usuario =='Usuario1'){                
                 var add = "<div>"
                 add+="<img src='./images/usuario1.jpg' class='img-fluid profile-image-pic img-thumbnail rounded-circle my-3'width='200px' alt='profile'>"
                 add+="</div>"                
                 $("#UserprofileIMG").append(add);
-            } else if(usuario =='Usuario2'){                
+            } else if(usuario =='Usuario2'){                            
                 var add = "<div>"
                 add+="<img src='./images/usuario2.jpg' class='img-fluid profile-image-pic img-thumbnail rounded-circle my-3'width='200px' alt='profile'>"
                 add+="</div>"               
@@ -107,11 +108,19 @@ $(document).ready(function()
             // Llamamos al método con el valor del Session ya guardado
             var edadActual = calcularEdad(userBday);
 
+            var actualStyle = document.getElementById('estilos');  //usuarios.html 
+                // Asignar estilo segun la edad  
+                  if(edadActual < 18){
+                    actualStyle.className = 'usuario1';  
+                } else if(edadActual >= 18){
+                    actualStyle.className = 'usuario2';  
+                }
+                
             // Crear el codigo HTML en donde se insertará la información
-            var add = "<tr>"
-            add+="<td>" + "Usuario: "+ userName +"</td>"
-            add+="<td>" + "Fecha de Nacimiento:" +  userBday +"</td>"
-            add+="</tr>"                 
+            var add = "<div class row>"
+            add+="<td>"+" Usuario:" + userName + "</td>"
+            add+="<td>"+"   Edad:" + edadActual + "</td>"            
+            add+="</div>"                 
         
             $("#userContent").append(add);
 
@@ -128,5 +137,4 @@ $(document).ready(function()
 
 
 
-        //var test =document.getElementById('userContent');
-        //test.className = 'usuario1';
+        
