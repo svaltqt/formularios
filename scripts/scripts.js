@@ -16,7 +16,8 @@ $(document).ready(function()
                    add+="</div>"                
                    $("#profileIMG" ).html(add);
                    //$("#profileIMG").append(add);  
-               }   
+               }
+               sessionStorage.setItem("tUser", tipoUsuario);    
             });                 
             
             $("#generar").click(function()
@@ -48,7 +49,7 @@ $(document).ready(function()
                 // Guardando los datos en SessionStorage
                 sessionStorage.setItem("name", name);
                 sessionStorage.setItem("bday", fechaNacimiento);
-                sessionStorage.setItem("tUser", tipoUsuario);         
+                       
             });
             // DOM Global
 
