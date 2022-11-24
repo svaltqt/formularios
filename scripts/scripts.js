@@ -1,23 +1,28 @@
 $(document).ready(function()
         { 
             
+            $("#SubjectsList").change(function(){
+               // Obtener valor del select
+               var tipoUsuario = $("#SubjectsList option:selected").text();
+
+               if(tipoUsuario =='Usuario1'){ 
+                   var add = "<div>"
+                   add+="<img src='./images/usuario1.jpg' class='img-fluid profile-image-pic img-thumbnail rounded-circle my-3'width='200px' alt='profile'>"
+                   add+="</div>"                
+                   $("#profileIMG" ).html(add);
+               } else if(tipoUsuario =='Usuario2'){
+                   var add = "<div>"
+                   add+="<img src='./images/usuario2.jpg' class='img-fluid profile-image-pic img-thumbnail rounded-circle my-3'width='200px' alt='profile'>"
+                   add+="</div>"                
+                   $("#profileIMG" ).html(add);
+                   //$("#profileIMG").append(add);  
+               }   
+            });                 
+            
             $("#generar").click(function()
             {               
 
-                // Obtener valor del select
-                var tipoUsuario = $("#SubjectsList option:selected").text();
-
-                if(tipoUsuario =='Usuario1'){ 
-                    var add = "<div>"
-                    add+="<img src='./images/usuario1.jpg' class='img-fluid profile-image-pic img-thumbnail rounded-circle my-3'width='200px' alt='profile'>"
-                    add+="</div>"                
-                    $("#profileIMG").append(add);
-                } else if(tipoUsuario =='Usuario2'){
-                    var add = "<div>"
-                    add+="<img src='./images/usuario2.jpg' class='img-fluid profile-image-pic img-thumbnail rounded-circle my-3'width='200px' alt='profile'>"
-                    add+="</div>"                
-                    $("#profileIMG").append(add);
-                }             
+                          
 
                 // Funcion generar numero random con dos args
                 function getRandom(min, max) {
