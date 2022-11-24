@@ -5,7 +5,7 @@ $(document).ready(function()
             {    
                 
 
-                //obtener valor del select
+                // Obtener valor del select
                 var tipoUsuario = $("#SubjectsList option:selected").text();
 
                 if(tipoUsuario =='Usuario1'){ 
@@ -71,34 +71,62 @@ $(document).ready(function()
                 
             });
             
-            // Cargar IMG en la web USUARIOS
-            var usuario = sessionStorage.getItem('tUser')
+            // Extraer datos del SessinStorage
+             var usuario = sessionStorage.getItem('tUser')
+             var userName = sessionStorage.getItem('name')
+             var userBday = sessionStorage.getItem('bday')
             
-
+            // Cargar IMG en la web USUARIOS
             if(usuario =='Usuario1'){ 
                 var add = "<div>"
                 add+="<img src='./images/usuario1.jpg' class='img-fluid profile-image-pic img-thumbnail rounded-circle my-3'width='200px' alt='profile'>"
-                add+="</div>"                 
-            
+                add+="</div>"                
                 $("#UserprofileIMG").append(add);
-            } else if(usuario =='Usuario2'){
+            } else if(usuario =='Usuario2'){                
                 var add = "<div>"
                 add+="<img src='./images/usuario2.jpg' class='img-fluid profile-image-pic img-thumbnail rounded-circle my-3'width='200px' alt='profile'>"
-                add+="</div>"                 
-            
+                add+="</div>"               
                 $("#UserprofileIMG").append(add);
-
             }   
 
-            //Carga datos en la web Usuarios
+           
 
-            var userName = sessionStorage.getItem('name')
-            var userBday = sessionStorage.getItem('bday')
+            // Calcular la edad    Fuente: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/Date
+            function calcularEdad(bday){
+                // Separamos por '/' Ejemplo: 20/3/2001
+                var birthday_arr = bday.split('/');
+                // En el arreglo 0 es el día, 1, el mes, 2 el año  | Se resta 1 al mes ya que el index inica en 0 y no en 1
+                var birthday_date = new Date(birthday_arr[2], birthday_arr[1] - 1, birthday_arr[0]);
+                // Calculamos la fecha actual
+                var today = new Date();
+                // hacemos el calculo de la fecha actual menos la fecha del usuario
+                var age = Math.floor((today-birthday_date) / (365.25 * 24 * 60 * 60 * 1000));
+                // retornamos la fecha en numeros enteros
+                return age;                
+            }
+            // Llamamos al método con el valor del Session ya guardado
+            var edadActual = calcularEdad(userBday);
 
+            // Crear el codigo HTML en donde se insertará la información
             var add = "<tr>"
             add+="<td>" + "Usuario: "+ userName +"</td>"
             add+="<td>" + "Fecha de Nacimiento:" +  userBday +"</td>"
             add+="</tr>"                 
         
             $("#userContent").append(add);
+
+            // Mostrar datos en html
+            var add = "<tr>"
+            add+="<td>" + userName + "</td>"
+            add+="<td>" + userBday + "</td>"
+            add+="<td>"+edadActual+"</td>"
+            add+="<tr>"                
+
+            $("table").append(add);
+
         });
+
+
+
+        //var test =document.getElementById('userContent');
+        //test.className = 'usuario1';
